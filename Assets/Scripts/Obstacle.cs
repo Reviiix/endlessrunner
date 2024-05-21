@@ -1,17 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    private void Start()
+    public float speed = 5f;
+
+    private void Update()
     {
-        MoveToLeft();
+        var newPosition = transform.position + Vector3.left * speed * Time.deltaTime;
+        
+        transform.position = newPosition;
     }
 
-    private void MoveToLeft()
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        transform.right;
+        col.GetComponent<PlayerMovement>().Death();
     }
-    
 }

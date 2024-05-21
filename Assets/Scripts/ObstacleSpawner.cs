@@ -6,6 +6,7 @@ public class ObstacleSpawner : MonoBehaviour
 {
     public GameObject obstacle;
     public Transform spawnpoint;
+    public int time;
 
     private void Start()
     {
@@ -14,9 +15,10 @@ public class ObstacleSpawner : MonoBehaviour
 
     private IEnumerator SpawnProcess()
     {
-        yield return new WaitForSeconds(1);
+        var t = Random.Range(1, 4);
+        yield return new WaitForSeconds(t);
         SpawnShit();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(t);
         StartCoroutine(SpawnProcess());
     }
 

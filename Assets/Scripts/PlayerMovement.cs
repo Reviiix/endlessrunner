@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public Rigidbody2D player;
-    private int speed = 3;
+    public int speed = 3;
+    public AudioSource PlayerJump;
+    public AudioSource PlayerDeath;
     
     private void Update()
     {
@@ -19,5 +21,11 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         player.velocity = transform.up * speed;
+        PlayerJump.Play();
+    }
+
+    public void Death()
+    {
+        PlayerDeath.Play();  
     }
 }
